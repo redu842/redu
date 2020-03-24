@@ -1,0 +1,147 @@
+Linux笔记
+Linux之父：Linus Torvals
+自由软件之父：Richard Stallman
+Unix最大特点：付费，源代码不开放
+Linux最大特点：不一定免费 （Redhat付费，centos免费），源代码开放
+GNU目的：开发自由软件，不受限制自由使用，复制，修改，发布，研究。
+常见的Linux的操作系统：Redhat（使用占比最高）
+Redhat和centos的区别：Redhat在更新软件和系统的时候要付费。
+Centos在Redhat的源代码基础上重新编译得到的（免费）
+
+shell 壳 为用户提供使用操作系统的接口  shell解释器（解释用户的命令，然后交给底层运行） 命令语言 shell脚本
+类型：sh（较早实现最基本的功能）   
+Csh（使用C语言的语法风格）
+   Ksh（兼容以上两者）
+   Bash（大多数的Linux系统默认都使用bash）
+
+
+命令提示符：[redu@localhost ~]$
+[当前登录的用户@当前登录的主机的主机名 当前的工作文件目录]$ 
+$表示当前登录的用户为普通用户 #管理员用户
+~当前用户的主目录（家目录）
+
+
+
+帮助命令：help man pinfo
+Linux命令上万条
+查看cat命令的方法：
+1.	man cat
+2.	cat –help
+3.	pinfo cat
+
+文件编辑：
+I  编辑文件
+按esc保存退出再按：输入wq
+
+关闭和重启Linux：(只有管理员才能运行)
+Shutdown（常用）poweroff  halt   reboot
+shutdown [选项...]  [时间]  [警告...]
+
+选项：
+  --help         	查看帮助
+  -H --halt       	 Halt the machine
+  -P --poweroff  	 Power-off the machine
+  -r --reboot     	 重启系统
+  -h             	 关闭系统
+  -k            	仅仅发出警告，不关机或者重启
+  --no-wall    		不发出信息
+  -c             	 取消发送将执行的shutdown命令
+
+
+
+
+十分钟系统关机
+Shutdown  -h +10
+Shutdown  -h 10
+Shutdown  10
+Shutdown  +10
+Shutdown  -h（默认一分钟以后关机）
+马上重启：
+Shutdown  -r  now
+Shutdown  -r  0
+Shutdown  -r  （默认一分钟以后关机）
+
+
+3取消关机
+Shutdown   -c
+
+
+
+Linux系统语法格式：
+一般：命令名   [选项1]   [选项2]…..<参数一>  <参数二>….
+1.	命令名：由小写字母构成
+2.	选项：是对命令的特别定义，一般以“-”开头多个选项可以共用一个“-”  
+3.	参数：提供命令运行的一些信息，或者是命令执行过程中所使用的文件名
+4.	命令 选项 参数之间必须有空格 
+
+Linux下目录都遵循给定的一定的规范，至少12个目录
+目录：创建，切换，删除，显示（mkdir，cd，rmdir，pwd）
+/dev 
+/etc:配置目录
+/home
+/root
+/lib
+/tmp：临时目录，重要文件不要放在这
+
+
+
+mkdir ：-m或—mode<目录属性>建立目录时同时设置目录的权限
+当前目录下创建一个隐藏文件：
+mkdir  .test2
+
+
+ -p或–parents   若所要建立目录的上层目录目前尚未建立，则会一并建立上层目录。
+一次创建多个目录：mkdir test{1..10}
+在tmp下创建dir目录：mkdir  /tmp/dir
+d：directory（目录）
+rwxr-xr-x  文件权限
+r：
+w：写
+x：执行
+-表示没有权限
+
+第一个表示文件拥有者的权限（rwx）
+第二个同组其他用户的权限（r-x）
+第三个其他用户的权限（r-x）
+
+444（8进制）二进制100 100 100
+					  R—R—R--- 
+
+
+cd切换到当前用户主目录
+当前所在目录/home/admin
+绝对路径：cd  /home/Admin/test
+相对路径：cd  test
+
+1.	“~”当前用户的主目录
+2.	“.”当前所在的目录
+3.	“..”当前上层目录
+4.	“-”回退到上一次的目录
+5.	cd  ~用户名
+cd  ~user（切换到user的主目录）
+cd = cd ~（切换到当前用户的主目录）
+
+
+rmdir 只能删除空目录（rmdir  [选项]  目录）
+rm-r 等于rmdir（但可以删除非空目录）
+
+pwd显示当前工作目录的绝对路径
+
+ls（列出文件和属性，但是包含隐藏文件）
+ls file     列表file是否存在                             （file是文本文件）
+
+ls  [选项]  [文件或目录]
+
+-l 列出文件属性
+-a 显示所有文件和目录
+-A 显示所有文件和目录但不会显示“.”和“..”
+-I 显示文件和inode编号
+
+-rw-rw-r--. 1 redu redu  0 3月  18 19:33 file
+“-”文件类型：文本文件
+1：文件的硬连接数
+redu:文件拥有者
+redu：文件的所属组
+0：文件的大小
+3月  18 19:33：文件的创建时间或者修改时间
+File：文件名
