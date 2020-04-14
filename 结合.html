@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #top{background-image: url("C:/Users/热度/Desktop/js/维权群二.jpg"); width: auto;height: 300px;}
+        #down{background-color: cadetblue;width: auto;height: 400px;}
+        li{float: left;height: 50px;width: 200px;background-color: rgb(28, 146, 64);list-style: none;text-align: center; }
+        #list{position: relative;
+            top: 0px;
+            left: 400px;
+        }
+       #text{display: none;background-color: goldenrod;width: 150px;}
+       #poss{background-color: gray;width: 300px;}
+       img{height: 300px;}
+       #know{font-size: 70px;
+        position: relative;
+        top: -400px;
+        left: 700px;
+       }
+       button{background-color: indianred;}
+      a{color: burlywood;}
+    </style>
+</head>
+<body>
+    <script>
+       window.alert("这是的一次尝试")
+    </script>
+   <div id="top">
+       <div id="poss">
+          账号：<input type="email"><br>
+           密码：<input type="password"><br>
+           <input type="submit" value="登录" onmouseover="document.getElementById('text').style.display='block'" 
+           onmouseout="document.getElementById('text').style.display='none'" onclick="alert('已经成功登陆');
+           document.getElementById('poss').style.display='none'">
+           <div>
+               <p id="text">点击后无法修改</p>
+           </div>
+       </div>
+       <div id="list">
+           <ul id="ol">
+           <li><a href="#">动画效果</a></li>
+           <li><a href="#">函数</a></li>
+           <li><a href="#">显示时间</a></li>
+           <li><a href="#">改变属性</a></li>
+           <li><a href="https://www.tv432.com/">看看视频</a></li>
+           </ul>
+       </div>
+      
+      
+   </div>
+   <div id="down">
+      
+           <div id="button">
+           <button type="button" onclick="document.getElementById('img').src='C:/Users/热度/Desktop/js/index.jpg';
+           document.getElementById('know').innerHTML='美丽的星空'+'</br>总是让人想起美好的爱情'">
+               第一张
+           </button>
+           <button type="button" onclick="document.getElementById('img').src='C:/Users/热度/Desktop/js/维权群二.jpg';
+           document.getElementById('know').innerHTML='可爱的小黄人'+'</br>很有趣的一部电影的截图'"
+           >
+           第二张
+        </button>
+        
+       </div>
+       <div id="text1"> 
+           <img id="img" src="C:\Users\热度\Desktop\js\index.jpg">
+           <p id="know">美丽的星空</br>总是让人想起美好的爱情</p>
+        </div>
+        
+    
+        
+      
+   </div>
+</body>
+</html>
