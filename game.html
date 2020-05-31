@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #big{background-image: url(../img/timg.jpg);height: 735px;width: 700px;}
+        #red{background-color: brown;height: 70px;width: 70px;
+        position: relative;
+        left: 35px;
+        top: 350px;
+        }
+        #green{background-color: chartreuse;height: 70px;width: 70px;
+            position: relative;
+            left: 630px;
+            top: 275px;
+        }
+        #divred{background-color: brown;width: 75px;}
+        #divgreen{background-color: rgb(17, 230, 17);width: 75px;
+        position: relative;
+        left: 500px;
+        top: -50px;
+        }
+        #powr{background-color: black;width: 70px;height: 70px;
+        position: relative;
+        left: 1000px;
+
+        }
+    </style>
+    <script src="../jQuery/jQuery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#up").click(function(){
+                x=$("red").position();
+                 $("#red").animate({top:"-=65px"})
+               })
+            $("#down").click(function(){
+               $("#red").animate({top:"+=64px"})
+            })
+            $("#left").click(function(){
+               $("#red").animate({left:"-=66px"})
+            })
+            $("#right").click(function(){
+               $("#red").animate({left:"+=66px"})
+            })
+
+            $("#gup").click(function(){
+                 $("#green").animate({top:"-=65px"})
+               })
+            $("#gdown").click(function(){
+               $("#green").animate({top:"+=64px"})
+            })
+            $("#gleft").click(function(){
+               $("#green").animate({left:"-=66px"})
+            })
+            $("#gright").click(function(){
+               $("#green").animate({left:"+=66px"})
+            })
+            $("#powrbu").click(function(){
+                var p = $("#divred")
+                var offset = p.offset()
+                $("#powr").offset({ top: offset.top, left: offset.left})
+            })
+            
+            
+
+
+        })
+    </script>
+</head>
+<body>
+    <div id="divred">
+         <button id="up">上</button>
+    <button id="down">下</button>
+    <button id="left">左</button>
+    <button id="right">右</button>
+    
+    </div>
+   
+   
+    <div id="divgreen">
+         <button id="gup">上</button>
+    <button id="gdown">下</button>
+    <button id="gleft">左</button>
+    <button id="gright">右</button>
+    </div>
+
+   
+
+    <div id="big">
+        <div id="red"></div>
+        <div id="green"></div>
+</div>
+</body>
+</html>
