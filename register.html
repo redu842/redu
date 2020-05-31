@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<script>
+    window.onload = init;
+   
+    var userName,psd,secPsd,phNum,userVerCode,submit,sysVerCode,chbox;
+    
+    var infoUserName,infoPsd,infoSecPsd,infoVerCode,infoPhNum;
+    function init(){
+        userName = document.getElementById("userName");
+        psd = document.getElementById("psd");
+        secPsd = document.getElementById("secPsd");
+        phNum = document.getElementById("phNum");
+        userVerCode = document.getElementById("userVerCode");
+        submit = document.getElementById("submit");
+        sysVerCode = document.getElementById("sysVerCode");
+        chbox = document.getElementById("chbox");
+
+        infoUserName = document.getElementById("infoUserName");
+        infoPsd = document.getElementById("infoPsd");
+        infoSecPsd = document.getElementById("infoSecPsd");
+        infoPhNum = document.getElementById("infoPhNum");
+        infoVerCode = document.getElementById("infoVerCode");
+
+        userName.onfocus = checkUserName;
+        userName.onblur = checkUserName; 
+
+        psd.onfocus = checkPsd;
+        psd.onblur  = checkPsd;
+
+        secPsd.onfocus = checkSecPsd;
+        secPsd.onblur  = checkSecPsd;
+
+        phNum.onfocus = checkPhNum;
+        phNum.onblur  = checkPhNum;
+
+        userVerCode.onfocus = showVerCode;
+        sysVerCode.onclick  = showVerCode;
+
+        userVerCode.onblur = checkVerCode;
+
+        submit.onclick = checkAll;
+    }
+   
+    var dictUserName = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.-_";
+
+    
+   
+    function hasIllegalChar(str,dict){
+        for(var i = 0;i < str.length;i++)
+        {
+            if(dict.indexOf(str.charAt(i)) == -1)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+   
+    function checkUserName(){
+        var str = userName.value; 
+
+        if(event.type == "focus")
+        {
+            infoUserName.style.color = "blue";    
+        }else{
+            infoUserName.style.color = "red";
+        }
+
+        if(str.length == 0)
+        {
+            infoUserName.innerHTML = "用户名不能为空";
+            return false;              
+        }else   if(str.length < 6 || str.length > 18)
+                {
+                    infoUserName.innerHTML = "用户名长度不在6~18之间";
+                    return false;
+                }else   if(isNaN(Number(str.charAt(0))) == false){
+                            infoUserName.innerHTML = "不能以数字打头";
+                            return false;
+                        }else   if(str.charAt(0) == "_" || str.charAt(0) == "-" || str.charAt(0) == "."){
+                                    infoUserName.innerHTML = "不能以特殊字符打头";
+                                    return false;
+                                }else   if(hasIllegalChar(str,dictUserName) == true)
+                                        {
+                                            infoUserName.innerHTML = "不能包含特殊字符"; 
+                                            return false;       
+                                        }else{
+                                            infoUserName.innerHTML = "恭喜您，可以注册";
+                                            infoUserName.style.color = "green";
+                                            return true;
+                                        }
+    }
+   
+    var dictPsd = "QAZXSWEDCVFRTGBNHYUJMKILOPqazxswedcvfrtgbnhyujmkiolp1234567890";
+    var dictAlpah = "QAZXSWEDCVFRTGBNHYUJMKIOLPqazxswedcvfrtgbnhyujmkilop";
+    var dictNum = "0123456789";
+    let str="QAZXSWEDCVFRTGBNHYUJMKILOPqazxswedcvfrtgbnhyujmkiolp1234567890"
+    let str=/\d+/
+    reg.Text(str)
+    function isAlphaAndNum(str){
+        var flagSpecial = 0,flagAlpha = 0,flagNum = 0;
+        
+        if(hasIllegalChar(str,dictPsd) == true)
+        {
+            flagSpecial = 1;
+            return false;
+        }
+        if(hasIllegalChar(str,dictAlpah) == false){
+            flagAlpha = 1;
+            return false;
+        }
+        if(hasIllegalChar(str,dictNum) == false){
+            flagNum = 1;
+            return false;
+        }
+        return true;
+    }
+   
+    function checkPsd(){
+        var str = psd.value;
+
+        if(event.type == "focus")
+        {
+            infoPsd.style.color = "blue";
+        }else{
+            infoPsd.style.color = "red";
+        }
+
+        if(str.length == 0)
+        {
+            infoPsd.innerHTML =  '<img src="../images/onError.gif">' + "密码不能为空";
+            return false;
+        }else   if(str.length < 6 || str.length > 18)
+                {
+                    infoPsd.innerHTML = '<img src="../images/onError.gif">' + "密码长度不在6-18之间";
+                    return false;
+                }else   if(isAlphaAndNum(str) == false){
+                            infoPsd.innerHTML = '<img src="../images/onError.gif">' + "请尝试字母+数字的组合";
+                            return false;
+                        }else{
+                            infoPsd.innerHTML = '<img src="../images/right.jpg">' + "输入正确";
+                            infoPsd.style.color = "green";
+                            return true;
+                        }
+    }
+   
+    function checkSecPsd(){
+        var str = secPsd.value;
+        var str2 = psd.value;
+
+        if(event.type == "focus")
+        {
+            infoSecPsd.style.color = "blue";
+        }else{
+            infoSecPsd.style.color = "red";
+        }
+
+        if(str.length == 0)
+        {
+            infoSecPsd.innerHTML =  '<img src="../images/onError.gif">' + "密码不能为空";
+            return false;
+        }else   if(str.length < 6 || str.length > 18)
+                {
+                    infoSecPsd.innerHTML = '<img src="../images/onError.gif">' + "密码长度不在6-18之间";
+                    return false;
+                }else   if(isAlphaAndNum(str) == false){
+                            infoSecPsd.innerHTML = '<img src="../images/onError.gif">' + "请尝试字母+数字的组合";
+                            return false;
+                        }else   if(str != str2){
+                                    infoSecPsd.innerHTML = '<img src="../images/onError.gif">' + "两次密码不相同";
+                                    return false;
+                                }else{
+                                    infoSecPsd.innerHTML = '<img src="../images/right.jpg">' + "输入正确";
+                                    infoSecPsd.style.color = "green";
+                                    return true;
+                                }
+    }
+    
+    var scopePhNum = ["13","14","15","16","18","19"];
+
+    function isStrInScope(str,scope){
+        for(var i = 0;i < scope.length;i++)
+        {
+            if(str == scope[i])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+   
+    function checkPhNum(){
+        var str = phNum.value;
+
+        if(event.type == "focus"){
+            infoPhNum.style.color = "blue";
+        }else{
+            infoPhNum.style.color = "red";
+         
+        }
+        if(str.length == 0)
+        {
+            infoPhNum.innerHTML = '<img src="../images/onError.gif">' + "手机号码不能为空";
+            return false;
+        }else   if(str.length != 11 || hasIllegalChar(str,dictNum) == true || isStrInScope(str.substr(0,2),scopePhNum) == false)
+                {
+                    infoPhNum.innerHTML = '<img src="../images/onError.gif">' + "手机号码输入有误";
+                    return false;
+                }else{
+                    infoPhNum.innerHTML = '<img src="../images/right.jpg">' + "输入正确";
+                    infoPhNum.style.color = "green";
+                    return true;
+                }
+    }
+    
+    function createVerCode(length,dict){
+        var str = "";
+        var randNum;
+
+        for(var i = 0;i < length;i++){
+            randNum = Math.floor(Math.random() * dict.length) // 0~61  15  18  3  51
+            str += dict.charAt(randNum); 
+        }
+
+        return str;
+    }
+  
+    function showVerCode(){
+       var str = createVerCode(4,dictPsd);
+
+       sysVerCode.innerText = str;
+    }
+   
+    function checkVerCode(){
+        var str = userVerCode.value;
+        var str2 = sysVerCode.innerText;
+
+        if(str.toLowerCase() == str2.toLowerCase())
+        {
+            infoVerCode.style.color = "green";
+            infoVerCode.innerHTML = '<img src="../images/right.jpg">' + "输入正确";
+            return true;
+        }else{
+            infoVerCode.style.color = "red";
+            infoVerCode.innerHTML = '<img src="../images/onError.gif">' + "验证码输入错误";
+            return false;
+        }
+    }
+   
+    function checkAll(){
+       
+        if(chbox.checked == true && checkPhNum() == true && checkPsd() == true && checkSecPsd() == true && checkUserName() == true && checkVerCode() == true)
+        {
+
+   
+            location.replace("welcome.html");
+        }
+        return false;
+    }
+</script>
+<style>
+    #center{background-color: rgb(126, 236, 159);height: 500px;width: 400px;
+    position: relative;
+    top: 100px;
+    left: 40%;
+    text-align:end;
+    }
+    body{background-color: rgb(23, 26, 25);}
+    #center{border-radius:30px}
+    h1{text-align: center;}
+</style>
+
+<body>
+    <div id="center">
+        <form> 
+            <h1>注册页面</h1>
+            <span>用 户 名：</span><input  type="text" id="userName"><span>@tom.com</span><span id="infoUserName"></span><br>
+            <span>密&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码：</span><input  type="password" id="psd"><span id="infoPsd"></span><br>
+            <span>确认密码：</span><input  type="password" id="secPsd"><span id="infoSecPsd"></span><br>
+            <span>手机号码：</span><input  type="text" id="phNum"><span id="infoPhNum"></span><br>
+            <span>验 证 码：</span><input  type="text" id="userVerCode"><span id="sysVerCode">1A5X</span><span id="infoVerCode"></span><br>
+            <input type="checkbox" id="chbox" checked><span>我已阅读并接受服务条款</span><br>
+            <input type="submit" value="注册" id="submit">
+        </form>
+    </div>  
+</body>
+</html>
