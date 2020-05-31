@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head><!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+          <script src="../jQuery/jQuery.js"></script>
+          <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+          
+          
+<script>
+$(document).ready(function(){
+  $("button#change").click(function(){
+    $("p").css("background-color","red")
+  })
+  $("button#dis").click(function(){
+    $("p").hide(1000);
+  })
+  $("button#discover").click(function(){
+    $("p").show(1000,function(){
+      $("p").css("background-color","red")
+    });
+  })
+  $("button#change2").click(function(){
+    $("p").toggle(1000);
+  })
+  $("button#change3").click(function(){
+    $("p").fadeIn(1500);
+  })
+  $("button#move").click(function(){
+    $("#anm").animate({height:300},200);
+    $("#anm").animate({width:300},200); 
+    $("#anm").animate({width:200},200);
+    $("#anm").animate({height:150},200);  
+  })
+  $("#text").click(function(){
+    alert($("p#text").text())
+  })
+  $("#get").click(function(){
+    alert($("#input1").val())
+  })
+
+})
+</script>
+<style>
+  #anm{background-color: black;height: 10px;width: 10px;}
+</style>
+<body>
+
+<h1>通过标签名查找 HTML 元素</h1>
+<button id="change">点击</button>
+<button id="dis">隐藏</button>
+<button id="discover">显示</button>
+<button id="change2">change2</button>
+<button id="change3">change3</button>
+<button id="move">动画</button>
+<button id="text">显示文本</button>
+<button id="get">显示填写文字</button>
+<p>Hello World!</p>
+<p>Hello China!</p>
+<p>Hello Shanghai!</p>
+<div id="anm"></div>
+<p id="demo"></p>
+<p id="text">这是测试文本</p>
+<input type="text" id="input1">
+
+
+
+
+
+
+
+</body>
+</html>
